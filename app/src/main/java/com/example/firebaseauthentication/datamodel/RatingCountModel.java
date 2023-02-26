@@ -1,4 +1,4 @@
-package com.example.firebaseauthentication;
+package com.example.firebaseauthentication.datamodel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 public class RatingCountModel {

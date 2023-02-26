@@ -15,7 +15,7 @@
         android:theme="@style/Theme.FirebaseAuthentication"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +28,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".HomeScreen"
-            android:launchMode="singleInstance"
-            android:exported="true"
-            >
-        </activity>
-        <activity
-            android:name=".HomeScreen1"
+            android:name=".view.HomeScreen1"
             android:launchMode="singleInstance"
             android:exported="true"
             >

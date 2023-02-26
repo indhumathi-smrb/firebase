@@ -1,8 +1,8 @@
-package com.example.firebaseauthentication;
+package com.example.firebaseauthentication.service;
+
+import com.example.firebaseauthentication.datamodel.ItemListModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

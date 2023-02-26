@@ -1,10 +1,11 @@
-package com.example.firebaseauthentication;
+package com.example.firebaseauthentication.datamodel;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.firebaseauthentication.R;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 public class ItemListModel {

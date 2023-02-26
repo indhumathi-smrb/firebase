@@ -1,4 +1,4 @@
-package com.example.firebaseauthentication;
+package com.example.firebaseauthentication.adapter;
 
 
 import android.content.Context;
@@ -6,14 +6,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.firebaseauthentication.datamodel.ItemListModel;
+import com.example.firebaseauthentication.R;
+import com.example.firebaseauthentication.databinding.ItemListBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,11 +62,17 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return viewHolder;
     }
 
+
     @NonNull
     private RecyclerView.ViewHolder getViewHolder(ViewGroup parent, LayoutInflater inflater) {
         RecyclerView.ViewHolder viewHolder;
-        View v1 = inflater.inflate(R.layout.item_list, parent, false);
+       /* View v1 = inflater.inflate(R.layout.item_list, parent, false);
         viewHolder = new ItemVH(v1);
+        return viewHolder;*/
+        ItemListBinding itemListBinding =
+                DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                        R.layout.item_list, parent, false);
+        viewHolder=new ItemVH(itemListBinding);
         return viewHolder;
     }
 
@@ -76,14 +84,13 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         switch (getItemViewType(position)) {
             case ITEM:
                 ItemVH itemVH = (ItemVH) holder;
-                itemVH.textView.setText(items.getTitle());
-                itemVH.tvDescription.setText(items.getDescription());
-                itemVH.tvPrice.setText("₹"+String.valueOf(items.getPrice()));
+                itemVH.itemListBinding.setItemsList(items);
+               // holder.setViewModel(itemVH.binding);
                 RequestOptions options = new RequestOptions()
                         .centerCrop()
                         .placeholder(R.mipmap.ic_launcher_round)
                         .error(R.mipmap.ic_launcher_round);
-                Glide.with(context).load(items.getImage()).apply(options).into(itemVH.ivItems);
+                Glide.with(context).load(items.getImage()).apply(options).into(itemVH.itemListBinding.ivItems);
                 break;
             case LOADING:
 //                Do nothing
@@ -101,6 +108,7 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public int getItemViewType(int position) {
         return (position == itemsList.size() - 1 && isLoadingAdded) ? LOADING : ITEM;
     }
+
 
     /*
    Helpers
@@ -169,20 +177,20 @@ public class PaginationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
      * Main list's content ViewHolder
      */
     protected class ItemVH extends RecyclerView.ViewHolder {
-        private TextView textView;
+       /* private TextView textView;
         private TextView tvDescription;
         private TextView tvPrice;
-        private ImageView ivItems;
-
-        public ItemVH(View itemView) {
-            super(itemView);
-
-            textView = (TextView) itemView.findViewById(R.id.textViewTitle);
+        private ImageView ivItems;*/
+        ItemListBinding itemListBinding;
+        public ItemVH(@NonNull ItemListBinding itemListBinding) {
+            super(itemListBinding.getRoot());
+            this.itemListBinding=itemListBinding;
+           /* textView = (TextView) itemView.findViewById(R.id.textViewTitle);
             tvDescription = (TextView) itemView.findViewById(R.id.textViewDescription);
             tvPrice = (TextView) itemView.findViewById(R.id.tvPrice);
-            ivItems = (ImageView) itemView.findViewById(R.id.ivItems);
-        }
+            ivItems = (ImageView) itemView.findViewById(R.id.ivItems);*/}
     }
+
 
 
     protected class LoadingVH extends RecyclerView.ViewHolder {

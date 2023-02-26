@@ -1,4 +1,4 @@
-package com.example.firebaseauthentication;
+package com.example.firebaseauthentication.view;
 
 
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.firebaseauthentication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;

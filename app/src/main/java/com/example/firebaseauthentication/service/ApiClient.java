@@ -1,4 +1,4 @@
-package com.example.firebaseauthentication;
+package com.example.firebaseauthentication.service;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
