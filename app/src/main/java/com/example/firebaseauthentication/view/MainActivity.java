@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent intent
                                             = new Intent(MainActivity.this,
                                             HomeScreen1.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                     finish();
                                 }
